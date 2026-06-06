@@ -4,10 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        sorted_nums = sorted(nums)
-        for k in range(len(nums)):
-            a = nums[-k:] + nums[:-k]
-            if a == sorted_nums:
-                return True
-        return False
+        count = 0
+        n = len(nums)
+
+        for i in range(n):
+            if nums[i] > nums[(i+1)%n]:
+                count += 1
+        return count <= 1
         
